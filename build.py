@@ -61,14 +61,14 @@ if __name__ == "__main__":
     username, channel, version = get_env_vars()
     reference = "{0}/{1}".format(name, version)
     upload = "https://api.bintray.com/conan/{0}/public-conan".format(username)
-    remote = "https://api.bintray.com/conan/conan-community/conan", "https://api.bintray.com/conan/bincrafters/public-conan"
+    remote = ["https://api.bintray.com/conan/conan-community/conan", "https://api.bintray.com/conan/bincrafters/public-conan"]
 
     builder = ConanMultiPackager(
         username=username,
         channel=channel,
         reference=reference,
         upload=upload,
-        remotes=', '.join([remote, upload]),
+        remotes=', '.join(remote + [upload]),
         upload_only_when_stable=True,
         stable_branch_pattern="stable/*")
 
