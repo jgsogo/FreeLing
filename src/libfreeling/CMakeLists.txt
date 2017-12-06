@@ -9,6 +9,7 @@ version.cc util.cc regexp.cc traces.cc language.cc configfile.cc analyzer.cc tok
 
 add_library(freeling ${freeling_SRCS})
 target_link_libraries(freeling foma treeler)
+target_compile_definitions(freeling PRIVATE FL_EXPORTS NOMINMAX)  # TODO: use GenerateExportHeaders.
 
 install(TARGETS freeling
         RUNTIME DESTINATION bin

@@ -6,6 +6,10 @@ foma/apply.c foma/coaccessible.c foma/constructions.c foma/define.c foma/determi
 add_library(foma ${sources})
 target_link_libraries(foma ${ZLIB_LIBRARIES})
 set_target_properties(foma PROPERTIES LINKER_LANGUAGE CXX)
+target_compile_definitions(foma PRIVATE FOMA_EXPORTS)  # TODO: use GenerateExportHeaders.
+if (WIN32)
+	target_compile_definitions(foma PRIVATE YY_NO_UNISTD_H)
+endif()
 target_include_directories(foma PUBLIC .)
 
 install(TARGETS foma

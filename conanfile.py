@@ -16,6 +16,8 @@ class FreeLingConan(ConanFile):
     options = {"shared": [True, False], }
     default_options = "shared=True"
     generators = "cmake"
+    
+    requires = "zlib/1.2.11@conan/stable", "Boost/1.64.0@conan/stable", "icu/59.1@bincrafters/stable"
 
     def source(self):
         # This should be in CMakeLists.txt, but do not want to be intrusive right now

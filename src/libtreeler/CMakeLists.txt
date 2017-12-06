@@ -4,7 +4,10 @@ treeler/base/token.cc treeler/base/fidx.cc treeler/base/dictionary.cc treeler/ut
 )
 
 add_library(treeler ${treeler_SRC})
+target_link_libraries(treeler ${ZLIB_LIBRARIES})
 set_target_properties(treeler PROPERTIES LINKER_LANGUAGE CXX)
+target_compile_definitions(treeler PRIVATE TREELER_EXPORTS)  # TODO: use GenerateExportHeaders.
+
 target_include_directories(treeler PUBLIC .) # TODO: Here we are also including 'main'
 
 install(TARGETS treeler
